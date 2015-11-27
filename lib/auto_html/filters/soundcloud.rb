@@ -2,7 +2,7 @@
 
 # set these options and default values
 # :width => '100%', :height => 166, :auto_play => false, :theme_color => '00FF00', :color => '915f33', :show_comments => false
-AutoHtml.add_filter(:soundcloud).with(:width => '100%', :height => 166, :auto_play => false, :theme_color => '00FF00', :color => '915f33', :show_comments => false, :show_artwork => false) do |text, options|
+AutoHtml.add_filter(:soundcloud).with(:width => '100%', :height => 166, :auto_play => false, :theme_color => '00FF00', :color => '915f33', :show_comments => false, :show_artwork => false, :class => "") do |text, options|
   require 'uri'
   require 'net/http'
   text.gsub(/(https?:\/\/)?(www.)?soundcloud\.com\/\S*/) do |match|
@@ -16,6 +16,7 @@ AutoHtml.add_filter(:soundcloud).with(:width => '100%', :height => 166, :auto_pl
     color = options[:color]
     show_artwork = options[:show_artwork]
     show_comments = options[:show_comments]
-    %{<iframe width="#{width}" height="#{height}" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=#{new_uri}&show_artwork=#{show_artwork}&show_comments=#{show_comments}&auto_play=#{auto_play}&color=#{color}&theme_color=#{theme_color}"></iframe>}
+    classname = options[:class]
+    %{<div class="#{classname}" style="width: #{width}px;height: #{height}px"><iframe width="#{width}" height="#{height}" scrolling="no" frameborder="no" src="http://w.soundcloud.com/player/?url=#{new_uri}&show_artwork=#{show_artwork}&show_comments=#{show_comments}&auto_play=#{auto_play}&color=#{color}&theme_color=#{theme_color}"></iframe></div>}
   end
 end

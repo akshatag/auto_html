@@ -8,7 +8,7 @@ AutoHtml.add_filter(:spotify).with(:width => '100%', :height => 166, :class => "
     height = options[:height]
     color = options[:color]
     classname = options[:class]
-    %{<div class="#{classname}" style="width: #{width}px; height: #{height}px;"><iframe width="#{width}" height="#{height}" scrolling="no" frameborder="no" src="https://embed.spotify.com/?uri=spotify:track:#{new_uri}"></iframe></div>}
+    %{<div class="#{classname}" style="width: #{width}px; height: #{height}px;"><iframe width="#{width}" height="#{height}" scrolling="no" frameborder="no" src="https://embed.spotify.com/?uri=spotify:track:#{uri}"></iframe></div>}
   else
   end
 
